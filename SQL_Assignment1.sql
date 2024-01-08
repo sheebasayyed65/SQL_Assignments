@@ -49,7 +49,7 @@ select customer_id, rental_id from rental where customer_id = 1;
 select title, rental_duration from film where rental_duration > 5;
 
 -- Question 8 : List the total number of films whose replacement cost is greater than $15 and less than $20.
-select title, replacement_cost from film where replacement_cost between 15 and 20;
+select count(*) as total_film from film where replacement_cost between 15 and 20;
 
 -- Question 9 : Find the number of films whose rental rate is less than $1.
 select count(rental_rate) as total_rental_rate from film;
