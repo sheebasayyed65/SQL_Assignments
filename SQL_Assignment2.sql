@@ -103,15 +103,14 @@ select * from payment; -- payment id, customer id, rental id, amount
 select * from rental; -- rental id
 
 SELECT 
-    CONCAT(first_name, ' ', last_name) AS FullName,
-    SUM(amount) AS Total
+    c.first_name, c.last_name, SUM(p.amount) AS total_amount
 FROM
-    customer
-        INNER JOIN
-    payment ON customer.customer_id = payment.payment_id
-        INNER JOIN
-    rental ON rental.customer_id = customer.customer_id
-    group by customer.customer_id;
+    customer c
+        JOIN
+    payment p ON c.customer_id = p.customer_id
+        JOIN
+    rental r ON c.customer_id = r.customer_id
+GROUP BY c.customer_id;
 
 -- Question 4: List the titles of movies rented by each customer in a particular city (e.g., 'London'). 
 -- Hint: JOIN customer, address, city, rental, inventory, and film tables, then use GROUP BY. 
