@@ -31,8 +31,7 @@ SELECT
     f.film_id,
     f.title AS film_title,
     f.rental_duration,
-    ROUND(AVG(DATEDIFF(return_date, rental_date)),
-            2) AS average_rental_duration
+    ROUND(AVG(DATEDIFF(return_date, rental_date)), 2) AS average_rental_duration
 FROM
     film f
         JOIN
